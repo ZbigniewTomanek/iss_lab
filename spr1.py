@@ -2,6 +2,12 @@ from matplotlib import pyplot as plt
 import numpy as np
 import scipy.stats as stats
 
+'''
+To jest już kod po modyfikacjach w trakcie zajęć. 
+Na sprawdzianie trzeba było wygenerować N przebiegów na jednym wykresie dla funkcji x' = ax i dowolnego parametru a,
+gdzie wartości x0 były brane z rozkładu normalnego.
+'''
+
 
 def plot_sims(N=1, T=10, h=0.01):
     mu = 0
@@ -37,7 +43,7 @@ def make_sim(x0, y0, T, h, a0=1, a1=1):
     x = np.array(x)
     y = np.array(y)
 
-    return t*h, x*h, y*h
+    return t*h, x, y
 
 
 if __name__ == '__main__':
