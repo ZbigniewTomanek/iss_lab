@@ -15,13 +15,15 @@ def water_sim():
     a = 1
     T = 10
     h = 0.001  # rzekomo najczęściej używana jest wartość 0.01
-    x0 = 100
+    x0 = 100  # początkowe odchylenie
+    y0 = 0  # początkowa prędkość
 
     # Tutaj wypełniamy tablicę wszystkimi rozpatrywanymi momentami czasu
     t = [i * h for i in range(int(T/h))]
 
     # Inicjujemy tablicę, która będzie przechowywała wartości temperatury o tej samej długości, co t
     x = [x0] * len(t)
+    y = [y0] * len(t)
 
     # No i tu dzieje się cała aproksymacyjna magia
     for i in range(1, len(t)):
