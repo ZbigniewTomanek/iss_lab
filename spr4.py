@@ -2,15 +2,16 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 # parametry symulacji
-p_up = 2  # górny próg histerezt
-p_down = -2  # dolny próg histerezy
+p_up = -0.1  # górny próg histerezt
+p_down = 0.05  # dolny próg histerezy
 ascending = False  # zmienna mówiąca o tym, czy wykres idzie do gory, czy w dol
-x_req = 60  # wartość oczekiwana
-x0 = 50  # wartość początkowa
-T = 100  # czas trwania symulacji
-a = -0.1  # współczynnik stygnięcia
+x_req = 2  # wartość oczekiwana
+x0 = 1  # wartość początkowa
+T = 5  # czas trwania symulacji
+a = -0.5  # współczynnik stygnięcia
 u = 6.5  # wartość sterowania
 h = 0.01  # wartość kroku
+delay = 0.01
 
 
 def steer(x):
@@ -41,7 +42,14 @@ def make_simulation():
     error[0] = x_req - x0
 
     for i in range(1, N):
-        u_val = steer(all_x[i - 1])
+        global delay
+        d = len(t) * delay
+        if i - d - 1 < 0:
+            d = 0
+        else:
+            d = i - d - 1
+
+        u_val = steer(all_x[int(d)])
         steering[i - 1] = u_val
         all_x[i] = all_x[i - 1] + h * (a * all_x[i - 1] + u_val)
         error[i] = x_req - all_x[i]
