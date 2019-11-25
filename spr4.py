@@ -1,6 +1,12 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
+"""
+Zadanie polegało na dodaniu do symulacji parametru uwzględniającego opóźnienie wykonywanego pomiaru.
+Parametr delay określa o jaką część całkowitego czasu symulacji mamy opóźnić sterowanie
+Wszystkie parametry poza wartością zadaną były podane
+"""
+
 # parametry symulacji
 p_up = -0.1  # górny próg histerezt
 p_down = 0.05  # dolny próg histerezy
@@ -12,7 +18,6 @@ a = -0.5  # współczynnik stygnięcia
 u = 6.5  # wartość sterowania
 h = 0.01  # wartość kroku
 delay = 0.01
-
 
 def steer(x):
     global ascending
